@@ -13,8 +13,10 @@ use App\Service\CacheService;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpKernel\Event\ExceptionEvent;
+use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpKernel\KernelEvents;
+use Symfony\Component\Routing\Exception\MethodNotAllowedException;
 
 class ExceptionListener implements EventSubscriberInterface
 {
@@ -36,7 +38,12 @@ class ExceptionListener implements EventSubscriberInterface
 
         switch (get_class($exception)) {
             case NotFoundHttpException::class:
-                $exception = new NotFoundException('Route does not exists');
+            case MethodNotAllowedException::class:
+            case MethodNotAllowedHttpException::class:
+                $exception = new NotFoundException('No route found for ' . $event->getRequest()->getPathInfo());
+                $data = $exception->buildErrorResponse();
+                $event->setResponse(new JsonResponse($data, $exception->getCode()));
+                break;
             case BadRequestException::class:
             case NotFoundException::class:
             case UnAuthorizedException::class:

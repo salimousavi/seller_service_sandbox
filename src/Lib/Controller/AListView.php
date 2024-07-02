@@ -2,17 +2,15 @@
 
 namespace App\Lib\Controller;
 
-abstract class AListView extends AResponse
+class AListView extends AResponse
 {
-    abstract static protected function mockDataClass(): string;
-
     protected function get200Response(): array
     {
         return [
             "sort_data" => $this->buildSort(),
             "pager" => $this->buildPager(),
             "form_data" => $this->buildFormData(),
-            "items" => array_slice(static::mockDataClass()::ITEMS, 0, 10),
+            "items" => array_slice($this->mockClass::ITEMS, 0, 10),
             "meta_data" => $this->buildMetadata(),
             "rate_limit" => $this->buildRateLimit(),
         ];
@@ -34,8 +32,8 @@ abstract class AListView extends AResponse
         return [
             "page" => 1,
             "item_per_page" => 10,
-            "total_pages" => ceil(count(static::mockDataClass()::ITEMS) / 10),
-            "total_rows" => count(static::mockDataClass()::ITEMS),
+            "total_pages" => ceil(count($this->mockClass::ITEMS) / 10),
+            "total_rows" => count($this->mockClass::ITEMS),
         ];
     }
 

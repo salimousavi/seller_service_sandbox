@@ -9,6 +9,7 @@ use App\Lib\Exception\NotFoundException;
 use App\Lib\Exception\UnAuthorizedException;
 use App\Lib\Exception\UndefinedResponseModeException;
 use App\Lib\Resolver\APIRequest;
+use App\Mock\AMock;
 
 abstract class AResponse
 {
@@ -33,6 +34,7 @@ abstract class AResponse
 
     public function __construct(
         protected APIRequest $apiRequest,
+        protected string $mockClass,
     )
     {
     }

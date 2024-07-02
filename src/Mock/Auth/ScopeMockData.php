@@ -1,8 +1,10 @@
 <?php
 
-namespace App\View\Auth;
+namespace App\Mock\Auth;
 
-class ScopeMockData
+use App\Mock\AMock;
+
+class ScopeMockData extends AMock
 {
     const ITEMS = [
         [

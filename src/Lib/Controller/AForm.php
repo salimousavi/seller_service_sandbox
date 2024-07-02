@@ -4,11 +4,11 @@ namespace App\Lib\Controller;
 
 use App\Lib\Exception\BadRequestException;
 
-class AObjectView extends AResponse
+class AForm extends AResponse
 {
     protected function get200Response(): array
     {
-        $items = $this->mockClass::ITEMS;
+        $items = $this->mockClass::RESPONSE200;
         $rand = rand(0, count($items) - 1);
         return $items[$rand];
     }
