@@ -1,0 +1,46 @@
+version: '3.3'
+
+services:
+  ss_worker:
+    build: ./
+    container_name: ss_worker
+    restart: always
+#     depends_on:
+#       - mysql
+#       - mailcatcher
+#     links:
+#       - mysql
+#       - mailcatcher
+    ports:
+      - "8000:80"
+    volumes:
+      - ./Docker/worker/vhosts:/etc/apache2/sites-enabled
+      - ./:/var/www
+
+#   ss_mysql:
+#     container_name: ss_mysql
+#     image: mysql:8.0
+#     cap_add:
+#       - SYS_NICE
+#     environment:
+#       - MYSQL_DATABASE=
+#       - MYSQL_ROOT_PASSWORD=root
+#     ports:
+#       - '3306:3306'
+#     volumes:
+#       - ./Docker/mysql:/var/lib/mysql
+
+#   ss_mailcatcher:
+#     container_name: ss_mailcatcher
+#     image: dockage/mailcatcher
+#     ports:
+#       - '1025:1025'
+#       - '1080:1080'
+
+#  ss_redis:
+#    container_name: ss_redis
+#    image: redis:latest
+#    ports:
+#      - '6379:6379'
+#    volumes:
+#      - ./Docker/redis/data:/data
