@@ -20,6 +20,11 @@ class APIRequest
         return $this->request->headers->all();
     }
 
+    public function getHeader(string $key)
+    {
+        return $this->request->headers->get($key);
+    }
+
     public function getAllQueryParams(): array
     {
         return $this->request->query->all();
@@ -33,5 +38,10 @@ class APIRequest
     public function getAllUrlParams(): array
     {
         return $this->request->attributes->get("_route_params");
+    }
+
+    public function getClientIp(): ?string
+    {
+        return $this->request->getClientIp();
     }
 }

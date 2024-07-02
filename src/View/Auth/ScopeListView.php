@@ -2,7 +2,7 @@
 
 namespace App\View\Auth;
 
-use App\View\AListView;
+use App\Lib\Controller\AListView;
 
 class ScopeListView extends AListView
 {
