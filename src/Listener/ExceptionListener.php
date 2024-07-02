@@ -20,12 +20,6 @@ use Symfony\Component\Routing\Exception\MethodNotAllowedException;
 
 class ExceptionListener implements EventSubscriberInterface
 {
-    use Helpers;
-
-    public function __construct(private CacheService $cacheService)
-    {
-    }
-
     public static function getSubscribedEvents()
     {
         return [KernelEvents::EXCEPTION => 'onKernelException'];

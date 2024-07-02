@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Lib\Constant\Constant;
 use App\Lib\Controller\AForm;
 use App\Lib\Controller\AListView;
 use App\Lib\Resolver\APIRequest;
@@ -14,7 +13,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class AuthAPIController extends AbstractAPIController
 {
-    #[Route(path: Constant::API_VERSION . '/auth/scopes', name: "ScopeListView", methods: ["GET"])]
+    #[Route(path: '/api/v3/auth/scopes', name: "ScopeListView", methods: ["GET"])]
     public function scopeListView(APIRequest $APIRequest): JsonResponse
     {
         return $this->createJsonResponse((new AListView($APIRequest, ScopeMockData::class))->execute());
