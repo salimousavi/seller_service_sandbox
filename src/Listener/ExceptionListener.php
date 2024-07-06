@@ -62,27 +62,25 @@ class ExceptionListener implements EventSubscriberInterface
                 $event->setResponse(new JsonResponse($data, $exception->getCode()));
                 break;
             default:
-                $this->logHttpRequest($event->getRequest(), null, RequestLogger::STATUS_ERROR);
                 throw $exception;
         }
-
-        $this->logHttpRequest($event->getRequest(), $event->getResponse(), RequestLogger::STATUS_ERROR);
     }
 
     public function onKernelResponse(ResponseEvent $event)
     {
         if ($event->getRequestType() !== HttpKernelInterface::MAIN_REQUEST) return;
-        $this->logHttpRequest($event->getRequest(), $event->getResponse(), RequestLogger::STATUS_OK);
+        $this->logHttpRequest($event->getRequest(), $event->getResponse());
     }
 
-    private function logHttpRequest(Request $request, ?Response $response = null, string $status = RequestLogger::STATUS_RECEIVED)
+    private function logHttpRequest(Request $request, ?Response $response = null)
     {
         $requestLoggerRepo = $this->entityManager->getRepository(RequestLogger::class);
 
         $requestLogger = (new RequestLogger())
             ->setIp($request->getClientIp())
             ->setUri($request->getPathInfo())
-            ->setStatus($status)
+            ->setRouteName($request->attributes->get('_route'))
+            ->setStatus($response->getStatusCode() != AResponse::RESPONSE_MODE_200 ? RequestLogger::STATUS_ERROR : RequestLogger::STATUS_OK)
             ->setCreatedAt(TimeService::Now())
             ->setResponseCode($request->headers->get(AResponse::RESPONSE_CODE_HEADER_NAME))
             ->setQueryParams($request->query->all())

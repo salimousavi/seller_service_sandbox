@@ -9,8 +9,12 @@ use App\Lib\Resolver\APIRequest;
 use App\Mock\Order\AllSellerDigikalaOrderMockData;
 use App\Mock\Order\SellerCancelDigikalaOrderItemMockData;
 use App\Mock\Order\SellerDigikalaOrderMockData;
+use App\Mock\Order\SellerDigikalaOrdersExcelExportMockData;
 use App\Mock\Order\SellerDigikalaOrderStatisticsMockData;
 use App\Mock\Order\SellerOrderStatisticsMockData;
+use App\Mock\Order\SellerOVLMockData;
+use App\Mock\Order\VariantDigikalaOrderStatisticsMockData;
+use App\Mock\Order\VariantOrdersMockData;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Attribute\Route;
 
@@ -40,11 +44,11 @@ class OrderAPIController extends AbstractAPIController
         return $this->createJsonResponse((new AObjectView($APIRequest, SellerDigikalaOrderStatisticsMockData::class))->execute());
     }
 
-//    #[Route(path: '/api/v3/orders/excel/export', name: "SellerDigikalaOrdersExcelExportForm", methods: ["POST"])]
-//    public function SellerDigikalaOrdersExcelExportForm(APIRequest $APIRequest): JsonResponse
-//    {
-//        return $this->createJsonResponse((new AForm($APIRequest, SellerDigikalaOrdersExcelExportMockData::class))->execute());
-//    }
+    #[Route(path: '/api/v3/orders/excel/export', name: "SellerDigikalaOrdersExcelExportForm", methods: ["POST"])]
+    public function SellerDigikalaOrdersExcelExportForm(APIRequest $APIRequest): JsonResponse
+    {
+        return $this->createJsonResponse((new AForm($APIRequest, SellerDigikalaOrdersExcelExportMockData::class))->execute());
+    }
 
     #[Route(path: '/api/v3/orders/{order_item_id}', name: "SellerCancelDigikalaOrderItemForm", methods: ["DELETE"])]
     public function SellerCancelDigikalaOrderItemForm(APIRequest $APIRequest): JsonResponse

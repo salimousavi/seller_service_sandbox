@@ -27,13 +27,15 @@ class AListView extends AResponse
 
     private function buildSort(): array
     {
-        return [
-            "sort_column" => "id",
-            "sort_order" => rand(1, 2) <= 1 ? "asc" : "desc",
-            "sort_columns" => [
-                "id"
-            ],
-        ];
+        return !empty($this->mockClass::SORT)
+            ? $this->mockClass::SORT
+            : [
+                "sort_column" => "id",
+                "sort_order" => rand(1, 2) <= 1 ? "asc" : "desc",
+                "sort_columns" => [
+                    "id"
+                ],
+            ];
     }
 
     private function buildPager(): array
@@ -48,12 +50,15 @@ class AListView extends AResponse
 
     private function buildFormData(): array
     {
+        if (!empty($this->mockClass::QUERY_PARAMS)) {
+            return array_merge($this->mockClass::QUERY_PARAMS[rand(0, count($this->mockClass::QUERY_PARAMS) - 1)], $this->apiRequest->getAllQueryParams()['search'] ?? []);
+        }
         return $this->apiRequest->getAllQueryParams()['search'] ?? [];
     }
 
     private function buildMetadata(): array
     {
-        return [];
+        return $this->mockClass::META_DATA;
     }
 
     private function buildRateLimit(): array

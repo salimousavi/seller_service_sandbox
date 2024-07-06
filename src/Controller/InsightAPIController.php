@@ -6,6 +6,10 @@ use App\Lib\Controller\AForm;
 use App\Lib\Controller\AListView;
 use App\Lib\Controller\AObjectView;
 use App\Lib\Resolver\APIRequest;
+use App\Mock\Insight\InsightOverviewExcelExportMockData;
+use App\Mock\Insight\InsightOverviewMockData;
+use App\Mock\Insight\InsightSalesReportsMockData;
+use App\Mock\Insight\InsightTopDeactivatedMockData;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Attribute\Route;
 

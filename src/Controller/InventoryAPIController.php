@@ -6,6 +6,10 @@ use App\Lib\Controller\AForm;
 use App\Lib\Controller\AListView;
 use App\Lib\Controller\AObjectView;
 use App\Lib\Resolver\APIRequest;
+use App\Mock\Inventory\SellerInventoriesDeadStockMockData;
+use App\Mock\Inventory\SellerInventoriesDetailExcelExportViewMockData;
+use App\Mock\Inventory\SellerInventoriesExcelExportMockData;
+use App\Mock\Inventory\SellerInventoriesMockData;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Attribute\Route;
 
@@ -26,7 +30,7 @@ class InventoryAPIController extends AbstractAPIController
     #[Route(path: '/api/v3/inventories/{product_variant_id}/export', name: "SellerInventoriesDetailExcelExportView", methods: ["GET"])]
     public function SellerInventoriesDetailExcelExportView(APIRequest $APIRequest): JsonResponse
     {
-        return $this->createJsonResponse((new AObjectView($APIRequest, SellerInventoriesDetailExcelExportViewMockData::class))->execute());
+        return $this->createJsonResponse((new AForm($APIRequest, SellerInventoriesDetailExcelExportViewMockData::class))->execute());
     }
 
     #[Route(path: '/api/v3/inventories/export', name: "SellerInventoriesExcelExportForm", methods: ["POST"])]
