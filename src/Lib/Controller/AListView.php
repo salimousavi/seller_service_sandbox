@@ -2,6 +2,8 @@
 
 namespace App\Lib\Controller;
 
+use App\Lib\Exception\BadRequestException;
+
 class AListView extends AResponse
 {
     protected function get200Response(): array
@@ -14,6 +16,13 @@ class AListView extends AResponse
             "meta_data" => $this->buildMetadata(),
             "rate_limit" => $this->buildRateLimit(),
         ];
+    }
+
+    protected function get400Response(): array
+    {
+        $errors = $this->mockClass::ERRORS;
+        $rand = rand(0, count($errors) - 1);
+        throw new BadRequestException($errors[$rand] ?? []);
     }
 
     private function buildSort(): array

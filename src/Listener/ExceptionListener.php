@@ -2,27 +2,41 @@
 
 namespace App\Listener;
 
-use App\Helpers;
+use App\Entity\RequestLogger;
+use App\Lib\Controller\AResponse;
 use App\Lib\Exception\AccessDeniedException;
 use App\Lib\Exception\BadRequestException;
 use App\Lib\Exception\IpLimiterException;
 use App\Lib\Exception\NotFoundException;
 use App\Lib\Exception\UnAuthorizedException;
 use App\Lib\Exception\UndefinedResponseModeException;
-use App\Service\CacheService;
+use App\Lib\Helper\TimeService;
+use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Event\ExceptionEvent;
+use Symfony\Component\HttpKernel\Event\ResponseEvent;
 use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\HttpKernel\HttpKernelInterface;
 use Symfony\Component\HttpKernel\KernelEvents;
 use Symfony\Component\Routing\Exception\MethodNotAllowedException;
 
 class ExceptionListener implements EventSubscriberInterface
 {
+    public function __construct(private EntityManagerInterface $entityManager)
+    {
+    }
+
     public static function getSubscribedEvents()
     {
-        return [KernelEvents::EXCEPTION => 'onKernelException'];
+        return [
+            KernelEvents::EXCEPTION => 'onKernelException',
+            KernelEvents::RESPONSE => 'onKernelResponse',
+        ];
     }
 
     public function onKernelException(ExceptionEvent $event)
@@ -48,7 +62,34 @@ class ExceptionListener implements EventSubscriberInterface
                 $event->setResponse(new JsonResponse($data, $exception->getCode()));
                 break;
             default:
+                $this->logHttpRequest($event->getRequest(), null, RequestLogger::STATUS_ERROR);
                 throw $exception;
         }
+
+        $this->logHttpRequest($event->getRequest(), $event->getResponse(), RequestLogger::STATUS_ERROR);
+    }
+
+    public function onKernelResponse(ResponseEvent $event)
+    {
+        if ($event->getRequestType() !== HttpKernelInterface::MAIN_REQUEST) return;
+        $this->logHttpRequest($event->getRequest(), $event->getResponse(), RequestLogger::STATUS_OK);
+    }
+
+    private function logHttpRequest(Request $request, ?Response $response = null, string $status = RequestLogger::STATUS_RECEIVED)
+    {
+        $requestLoggerRepo = $this->entityManager->getRepository(RequestLogger::class);
+
+        $requestLogger = (new RequestLogger())
+            ->setIp($request->getClientIp())
+            ->setUri($request->getPathInfo())
+            ->setStatus($status)
+            ->setCreatedAt(TimeService::Now())
+            ->setResponseCode($request->headers->get(AResponse::RESPONSE_CODE_HEADER_NAME))
+            ->setQueryParams($request->query->all())
+            ->setRequestParams($request->request->all())
+            ->setResponse($response?->getContent());
+
+        $this->entityManager->persist($requestLogger);
+        $this->entityManager->flush();
     }
 }

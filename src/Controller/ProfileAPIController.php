@@ -6,6 +6,15 @@ use App\Lib\Controller\AForm;
 use App\Lib\Controller\AListView;
 use App\Lib\Controller\AObjectView;
 use App\Lib\Resolver\APIRequest;
+use App\Mock\Profile\ProfileAddressMockData;
+use App\Mock\Profile\ProfileBusinessMockData;
+use App\Mock\Profile\ProfileDocumentMockData;
+use App\Mock\Profile\ProfileMockData;
+use App\Mock\Profile\ProfilePerformanceMockData;
+use App\Mock\Profile\ProfileStoreMockData;
+use App\Mock\Profile\ProfileTrainingMockData;
+use App\Mock\Profile\ProfileWarehouseAddressMockData;
+use App\Mock\Profile\UpdateBusinessDataMockData;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Attribute\Route;
 

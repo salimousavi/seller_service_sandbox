@@ -17,6 +17,6 @@ class AForm extends AResponse
     {
         $errors = $this->mockClass::ERRORS;
         $rand = rand(0, count($errors) - 1);
-        throw new BadRequestException($errors[$rand]);
+        throw new BadRequestException($errors[$rand] ?? []);
     }
 }
