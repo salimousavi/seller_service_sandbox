@@ -43,6 +43,15 @@ x-response-code = 200
 ```
 
 This header gets the Http status code that you expect and create response based on that, so you can see the response structures you will see in each request status code from that Api.
+Acceptable Response-codes are:
+```
+200
+400
+401
+403
+404
+429
+```
 
 
 ## Contributing
