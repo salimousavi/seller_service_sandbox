@@ -5,10 +5,10 @@ This project is a Dockerize service to help developers to understand various res
 ## Installation
 
 ### 1st step:
-Clone the sandbox project (implemented on Symfony) from this [Git Repository](https://github.com/sofreh/seller_service_sandbox)
+Clone the sandbox project (implemented on Symfony) from this [Git Repository](https://github.com/salimousavi/seller_service_sandbox)
 
 ```bash
-git clone https://github.com/sofreh/seller_service_sandbox.git
+git clone https://github.com/salimousavi/seller_service_sandbox.git
 ```
 
 ### 2nd step:
