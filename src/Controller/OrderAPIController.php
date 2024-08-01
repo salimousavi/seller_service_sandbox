@@ -68,10 +68,4 @@ class OrderAPIController extends AbstractAPIController
         return $this->createJsonResponse((new AObjectView($APIRequest, VariantDigikalaOrderStatisticsMockData::class))->execute());
     }
 
-    #[Route(path: '/api/v3/ovl/{seller_id}', name: "SellerOVLObjectView", methods: ["GET"])]
-    public function SellerOVLObjectView(APIRequest $APIRequest): JsonResponse
-    {
-        return $this->createJsonResponse((new AObjectView($APIRequest, SellerOVLMockData::class))->execute());
-    }
-
 }

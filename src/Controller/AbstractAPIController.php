@@ -14,4 +14,9 @@ abstract class AbstractAPIController extends AbstractController
             'data' => $data,
         ]);
     }
+
+    protected function createJsonResponseV2(array $data): JsonResponse
+    {
+        return new JsonResponse($data);
+    }
 }
