@@ -43,10 +43,6 @@ ADD https://github.com/mlocati/docker-php-extension-installer/releases/latest/do
 RUN chmod +x /usr/local/bin/install-php-extensions && sync && \
     install-php-extensions amqp
 
-# Add Xdebug server
-#ADD 20-xdebug.ini /etc/php/8.2/fpm/conf.d/20-xdebug.ini
-#ADD error_reporting.ini /etc/php/8.2/cli/conf.d/error-report.ini
-
 COPY ./Docker/worker/vhosts /etc/apache2/sites-enabled
 
 COPY . /var/www

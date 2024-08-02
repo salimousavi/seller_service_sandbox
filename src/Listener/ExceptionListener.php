@@ -84,8 +84,11 @@ class ExceptionListener implements EventSubscriberInterface
             ->setCreatedAt(TimeService::Now())
             ->setResponseCode($request->headers->get(AResponse::RESPONSE_CODE_HEADER_NAME))
             ->setQueryParams($request->query->all())
-            ->setRequestParams($request->request->all())
-            ->setResponse($response?->getContent());
+            ->setRequestParams($request->request->all());
+
+        if ($response) {
+            $requestLogger->setResponse(json_encode($response));
+        }
 
         $this->entityManager->persist($requestLogger);
         $this->entityManager->flush();
