@@ -19,6 +19,12 @@ class AuthAPIController extends AbstractAPIController
         return $this->createJsonResponse((new AListView($APIRequest, ScopeMockData::class))->execute());
     }
 
+    #[Route(path: '/api/v3/auth/scopes/{client_code}', name: "clientScopeListView", methods: ["GET"])]
+    public function clientScopeListView(APIRequest $APIRequest): JsonResponse
+    {
+        return $this->createJsonResponse((new AListView($APIRequest, ScopeMockData::class))->execute());
+    }
+
     #[Route(path: '/api/v3/auth/token', name: "ClientCreateTokenForm", methods: ["POST"])]
     public function ClientCreateTokenForm(APIRequest $APIRequest): JsonResponse
     {
