@@ -8,16 +8,19 @@ class LighteningDealCreateBidMockData extends AMockV2
 {
     protected static function response1(): ?string
     {
-        return '';
-    }
-
-    protected static function response2(): ?string
-    {
-        return '';
-    }
-
-    protected static function response3(): ?string
-    {
-        return '';
+        return '{
+            "status": "ok",
+            "data": {
+                "chargeWallet": true,
+                "totalBIdsPrice": 7000000,
+                "productVariantsCount": 1,
+                "promotionsCount": 1,
+                "totalPrice": 7000000,
+                "totalPriceWallet": 7000000,
+                "totalPriceCredit": 0,
+                "variantQuantity": 1,
+                "promotionsQuantity": 1
+            }
+        }';
     }
 }

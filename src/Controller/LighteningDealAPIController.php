@@ -31,7 +31,6 @@ class LighteningDealAPIController extends AbstractAPIController
         return $this->createJsonResponseV2(ResponseBuilder::execute($APIRequest, LighteningDealProductVariantMockData::class));
     }
 
-    // TODO
     #[Route(path: '/api/v3/lightening-deal/promotions', name: "LighteningDealPromotionsListView", methods: ["GET"])]
     public function LighteningDealPromotionsListView(APIRequest $APIRequest): JsonResponse
     {
@@ -44,14 +43,12 @@ class LighteningDealAPIController extends AbstractAPIController
         return $this->createJsonResponseV2(ResponseBuilder::execute($APIRequest, LighteningDealValidatedPromotionsMockData::class));
     }
 
-    // TODO
     #[Route(path: '/api/v3/lightening-deal/bids', name: "LighteningDealCreateBidForm", methods: ["POST"])]
     public function LighteningDealCreateBidForm(APIRequest $APIRequest): JsonResponse
     {
         return $this->createJsonResponseV2(ResponseBuilder::execute($APIRequest, LighteningDealCreateBidMockData::class));
     }
 
-    // TODO
     #[Route(path: '/api/v3/lightening-deal/bids', name: "LighteningDealBidsListView", methods: ["GET"])]
     public function LighteningDealBidsListView(APIRequest $APIRequest): JsonResponse
     {
@@ -64,7 +61,11 @@ class LighteningDealAPIController extends AbstractAPIController
         return $this->createJsonResponseV2(ResponseBuilder::execute($APIRequest, LighteningDealBidsSummaryMockData::class));
     }
 
-    #[Route(path: '/api/v3/lightening-deal/check-duplicate-dkp-in-promotion/{promotionId}/{productId}/{sellerId}', name: "LighteningDealDuplicateBidVariantObjectView", methods: ["GET"])]
+    #[Route(
+        path: '/api/v3/lightening-deal/check-duplicate-dkp-in-promotion/{promotionId}/{productId}/{sellerId}',
+        name: "LighteningDealDuplicateBidVariantObjectView",
+        methods: ["GET"]
+    )]
     public function LighteningDealDuplicateBidVariantObjectView(APIRequest $APIRequest): JsonResponse
     {
         return $this->createJsonResponseV2(ResponseBuilder::execute($APIRequest, LighteningDealDuplicateBidVariantMockData::class));
