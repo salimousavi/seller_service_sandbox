@@ -9,6 +9,7 @@ use App\Lib\Controller\ResponseBuilder;
 use App\Lib\Resolver\APIRequest;
 use App\Mock\Order\AllSellerDigikalaOrderMockData;
 use App\Mock\Order\SellerCancelDigikalaOrderItemMockData;
+use App\Mock\Order\SellerDigikalaOrderHistoryMockData;
 use App\Mock\Order\SellerDigikalaOrderMockData;
 use App\Mock\Order\SellerDigikalaOrdersExcelExportMockData;
 use App\Mock\Order\SellerDigikalaOrderStatisticsMockData;
@@ -44,6 +45,12 @@ class OrderAPIController extends AbstractAPIController
     public function SellerDigikalaOrderStatisticsObjectView(APIRequest $APIRequest): JsonResponse
     {
         return $this->createJsonResponse((new AObjectView($APIRequest, SellerDigikalaOrderStatisticsMockData::class))->execute());
+    }
+
+    #[Route(path: '/api/v3/orders/history', name: "SellerDigikalaOrderHistoryListView", methods: ["GET"])]
+    public function SellerDigikalaOrderHistoryListView(APIRequest $APIRequest): JsonResponse
+    {
+        return $this->createJsonResponseV2(ResponseBuilder::execute($APIRequest, SellerDigikalaOrderHistoryMockData::class));
     }
 
     #[Route(path: '/api/v3/orders/excel/export', name: "SellerDigikalaOrdersExcelExportForm", methods: ["POST"])]

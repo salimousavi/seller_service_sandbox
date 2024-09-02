@@ -48,11 +48,11 @@ class VariantAPIController extends AbstractAPIController
         return $this->createJsonResponse((new AForm($APIRequest, UpdateProductVariantMockData::class))->execute());
     }
 
-    #[Route(path: '/api/v3/variants/import', name: "ProductVariantImportForm", methods: ["POST"])]
-    public function ProductVariantImportForm(APIRequest $APIRequest): JsonResponse
-    {
-        return $this->createJsonResponse((new AForm($APIRequest, ProductVariantImportMockData::class))->execute());
-    }
+//    #[Route(path: '/api/v3/variants/import', name: "ProductVariantImportForm", methods: ["POST"])]
+//    public function ProductVariantImportForm(APIRequest $APIRequest): JsonResponse
+//    {
+//        return $this->createJsonResponse((new AForm($APIRequest, ProductVariantImportMockData::class))->execute());
+//    }
 
     #[Route(path: '/api/v3/variants/export', name: "ProductConfigExcelExportForm", methods: ["POST"])]
     public function ProductConfigExcelExportForm(APIRequest $APIRequest): JsonResponse

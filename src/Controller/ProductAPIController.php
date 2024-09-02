@@ -178,11 +178,11 @@ class ProductAPIController extends AbstractAPIController
         return $this->createJsonResponseV2(ResponseBuilder::execute($APIRequest, SellerProductManagementMockData::class));
     }
 
-    #[Route(path: '/api/v3/products/filters/seller', name: "SellerProductManagementFiltersObjectView", methods: ["GET"])]
-    public function SellerProductManagementFiltersObjectView(APIRequest $APIRequest): JsonResponse
-    {
-        return $this->createJsonResponseV2(ResponseBuilder::execute($APIRequest, SellerProductManagementFiltersMockData::class));
-    }
+//    #[Route(path: '/api/v3/products/filters/seller', name: "SellerProductManagementFiltersObjectView", methods: ["GET"])]
+//    public function SellerProductManagementFiltersObjectView(APIRequest $APIRequest): JsonResponse
+//    {
+//        return $this->createJsonResponseV2(ResponseBuilder::execute($APIRequest, SellerProductManagementFiltersMockData::class));
+//    }
 
     #[Route(path: '/api/v3/products/{product_id}/score', name: "ProductContentScoreObjectView", methods: ["GET"])]
     public function ProductContentScoreObjectView(APIRequest $APIRequest): JsonResponse

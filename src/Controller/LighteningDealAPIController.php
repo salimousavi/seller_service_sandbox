@@ -77,9 +77,9 @@ class LighteningDealAPIController extends AbstractAPIController
         return $this->createJsonResponseV2(ResponseBuilder::execute($APIRequest, LighteningDealChangePaymentMethodMockData::class));
     }
 
-    #[Route(path: '/api/v3/lightening-deal/validate/product/{productId}', name: "LighteningDealValidateProductObjectView", methods: ["GET"])]
-    public function LighteningDealValidateProductObjectView(APIRequest $APIRequest): JsonResponse
-    {
-        return $this->createJsonResponseV2(ResponseBuilder::execute($APIRequest, LighteningDealValidateProductMockData::class));
-    }
+//    #[Route(path: '/api/v3/lightening-deal/validate/product/{productId}', name: "LighteningDealValidateProductObjectView", methods: ["GET"])]
+//    public function LighteningDealValidateProductObjectView(APIRequest $APIRequest): JsonResponse
+//    {
+//        return $this->createJsonResponseV2(ResponseBuilder::execute($APIRequest, LighteningDealValidateProductMockData::class));
+//    }
 }
