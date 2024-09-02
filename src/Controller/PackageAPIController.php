@@ -67,7 +67,6 @@ class PackageAPIController extends AbstractAPIController
         return $this->createJsonResponseV2(ResponseBuilder::execute($APIRequest, SellerCreateConsignmentPackageMockData::class));
     }
 
-    // TODO
     #[Route(path: '/api/v3/packages/order-fulfilment/variants', name: "SellerCreateOrderFulfilmentPackageListViewV2", methods: ["POST"])]
     public function SellerCreateOrderFulfilmentPackageListViewV2(APIRequest $APIRequest): JsonResponse
     {

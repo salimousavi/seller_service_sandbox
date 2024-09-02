@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Lib\Controller\AForm;
 use App\Lib\Controller\AListView;
 use App\Lib\Controller\AObjectView;
+use App\Lib\Controller\ResponseBuilder;
 use App\Lib\Resolver\APIRequest;
 use App\Mock\Order\AllSellerDigikalaOrderMockData;
 use App\Mock\Order\SellerCancelDigikalaOrderItemMockData;
@@ -15,6 +16,7 @@ use App\Mock\Order\SellerOrderStatisticsMockData;
 use App\Mock\Order\SellerOVLMockData;
 use App\Mock\Order\VariantDigikalaOrderStatisticsMockData;
 use App\Mock\Order\VariantOrdersMockData;
+use App\Mock\Product\ProductCommissionMockData;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Attribute\Route;
 
@@ -29,7 +31,7 @@ class OrderAPIController extends AbstractAPIController
     #[Route(path: '/api/v3/orders/statistics', name: "SellerOrderStatisticsObjectView", methods: ["GET"])]
     public function SellerOrderStatisticsObjectView(APIRequest $APIRequest): JsonResponse
     {
-        return $this->createJsonResponse((new AObjectView($APIRequest, SellerOrderStatisticsMockData::class))->execute());
+        return $this->createJsonResponseV2(ResponseBuilder::execute($APIRequest, SellerOrderStatisticsMockData::class));
     }
 
     #[Route(path: '/api/v3/orders/ongoing', name: "SellerDigikalaOrderListView", methods: ["GET"])]

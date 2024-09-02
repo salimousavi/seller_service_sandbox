@@ -192,7 +192,6 @@ class ProductAPIController extends AbstractAPIController
         return $this->createJsonResponseV2(ResponseBuilder::execute($APIRequest, SellerProductManagementFiltersMockData::class));
     }
 
-    // TODO: add data
     #[Route(path: '/api/v3/products/{product_id}/score', name: "ProductContentScoreObjectView", methods: ["GET"])]
     public function ProductContentScoreObjectView(APIRequest $APIRequest): JsonResponse
     {
@@ -223,7 +222,6 @@ class ProductAPIController extends AbstractAPIController
         return $this->createJsonResponseV2(ResponseBuilder::execute($APIRequest, ProductEditAutoTitleSuggestionMockData::class));
     }
 
-    // TODO: add data
     #[Route(path: '/api/v3/commission/commissions/{product_id}', name: "ProductCommissionObjectView", methods: ["GET"])]
     public function ProductCommissionObjectView(APIRequest $APIRequest): JsonResponse
     {
