@@ -9,7 +9,7 @@ class DraftProductMockData extends AMockV2
     protected static function response1(): ?string
     {
         return '{
-        "status": 200,
+        "status": "ok",
         "data": {
           "id": 653996,
           "category_id": 6004,
@@ -153,7 +153,7 @@ class DraftProductMockData extends AMockV2
     protected static function response2(): ?string
     {
         return '{
-        "status": 200,
+        "status": "ok",
         "data": {
           "id": 653995,
           "category_id": 86,
@@ -274,7 +274,7 @@ class DraftProductMockData extends AMockV2
     protected static function response3(): ?string
     {
         return '{
-        "status": 200,
+        "status": "ok",
         "data": {
           "id": 653992,
           "category_id": 77,

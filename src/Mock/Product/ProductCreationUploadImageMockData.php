@@ -21,7 +21,7 @@ class ProductCreationUploadImageMockData extends AMockV2
     protected static function response2(): ?string
     {
         return '{
-        "status": 200,
+        "status": "ok",
         "data": {
           "isValid": true,
           "data": {
@@ -36,7 +36,7 @@ class ProductCreationUploadImageMockData extends AMockV2
     protected static function response3(): ?string
     {
         return '{
-        "status": 200,
+        "status": "ok",
         "data": {
           "isValid": true,
           "data": {

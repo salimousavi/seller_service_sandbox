@@ -2,14 +2,8 @@
 
 namespace App\Controller;
 
-use App\Lib\Controller\AForm;
-use App\Lib\Controller\AListView;
-use App\Lib\Controller\AObjectView;
 use App\Lib\Controller\ResponseBuilder;
 use App\Lib\Resolver\APIRequest;
-use App\Mock\Auth\ClientCreateTokenMockData;
-use App\Mock\Auth\ClientRefreshTokenMockData;
-use App\Mock\Auth\ScopeMockData;
 use App\Mock\Product\BeingProductSellerViewMockData;
 use App\Mock\Product\BrandCategoryCommissionMockData;
 use App\Mock\Product\BrandRequestMockData;
@@ -19,7 +13,6 @@ use App\Mock\Product\ContentCreationBrandRequestLogoImageMockData;
 use App\Mock\Product\ContentCreationRequestUploadImageMockData;
 use App\Mock\Product\DeleteDraftProductMockData;
 use App\Mock\Product\DraftProductCountMockData;
-use App\Mock\Product\DraftProductListMockData;
 use App\Mock\Product\DraftProductMockData;
 use App\Mock\Product\ProductAssignMockData;
 use App\Mock\Product\ProductCategorySearchV2MockData;
@@ -35,7 +28,6 @@ use App\Mock\Product\ProductCreationUploadImageMockData;
 use App\Mock\Product\ProductEditAutoTitleSuggestionMockData;
 use App\Mock\Product\ProductEditFormMockData;
 use App\Mock\Product\ProductEditMockData;
-use App\Mock\Product\ProductManagementFilterSuggestViewMockData;
 use App\Mock\Product\ProductPublishMockData;
 use App\Mock\Product\ProductSearchSuggestionV2MockData;
 use App\Mock\Product\ProductSearchV2MockData;

@@ -9,7 +9,7 @@ class ProductEditAutoTitleSuggestionMockData extends AMockV2
     protected static function response1(): ?string
     {
         return '{
-        "status": 200,
+        "status": "ok",
         "data": {
           "title_fa": "شلوار جین بچگانه مدل طرح لی رنگ زغالی",
           "title_en": "",
@@ -25,7 +25,7 @@ class ProductEditAutoTitleSuggestionMockData extends AMockV2
     protected static function response2(): ?string
     {
         return '{
-        "status": 200,
+        "status": "ok",
         "data": {
           "title_fa": "",
           "title_en": "",
@@ -37,7 +37,7 @@ class ProductEditAutoTitleSuggestionMockData extends AMockV2
     protected static function response3(): ?string
     {
         return '{
-        "status": 200,
+        "status": "ok",
         "data": {
           "title_fa": "شلوارک مردانه لیورجی مدل 16248876",
           "title_en": "",

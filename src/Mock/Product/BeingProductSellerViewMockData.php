@@ -10,7 +10,7 @@ class BeingProductSellerViewMockData extends AMockV2
     protected static function response1(): ?string
     {
         return '{
-        "status": 200,
+        "status": "ok",
         "data": {
           "name": "کتاب See Me اثر Nicholas Sparks انتشارات Grand Central Publishing",
           "brand": "متفرقه",
@@ -38,7 +38,8 @@ class BeingProductSellerViewMockData extends AMockV2
             "length": 22,
             "height": 3,
             "weight": 560
-          }
+          },
+          "price_type": "recommended"
         }
       }';
     }
@@ -46,7 +47,7 @@ class BeingProductSellerViewMockData extends AMockV2
     protected static function response2(): ?string
     {
         return '{
-        "status": 200,
+        "status": "ok",
         "data": {
           "name": "برچسب ماهوت مدل Leafs مناسب برای ساعت هوشمند هوآوی Watch 2",
           "brand": "ماهوت",
@@ -74,7 +75,8 @@ class BeingProductSellerViewMockData extends AMockV2
             "length": 18,
             "height": 1,
             "weight": 20
-          }
+          },
+          "price_type": "recommended"
         }
       }';
     }
@@ -82,7 +84,7 @@ class BeingProductSellerViewMockData extends AMockV2
     protected static function response3(): ?string
     {
         return '{
-        "status": 200,
+        "status": "ok",
         "data": {
           "name": "پاوربانک شیائومی مدل Mi PB3018ZM ظرفیت 30000 میلی آمپر ساعت",
           "brand": "شیائومی",
@@ -111,7 +113,8 @@ class BeingProductSellerViewMockData extends AMockV2
             "height": 5,
             "weight": 900
           }
-        }
+        },
+        "price_type": "recommended"
       }';
     }
 }

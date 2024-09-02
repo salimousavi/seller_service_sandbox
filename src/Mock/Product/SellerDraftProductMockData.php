@@ -9,7 +9,7 @@ class SellerDraftProductMockData extends AMockV2
     protected static function response1(): ?string
     {
         return '{
-        "status": 200,
+        "status": "ok",
         "data": {
           "sort_data": {
             "sort_column": "id",

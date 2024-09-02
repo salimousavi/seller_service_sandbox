@@ -9,7 +9,7 @@ class ProductCreationAutoTitleSuggestionMockData extends AMockV2
     protected static function response1(): ?string
     {
         return '{
-        "status": 200,
+        "status": "ok",
         "data": {
           "title_fa": "ست تی شرت و شلوارک دخترانه مدل یونیکورن کد ۳۰ رنگ سبز",
           "title_en": "",
@@ -25,7 +25,7 @@ class ProductCreationAutoTitleSuggestionMockData extends AMockV2
     protected static function response2(): ?string
     {
         return '{
-        "status": 200,
+        "status": "ok",
         "data": {
           "title_fa": "ست تی شرت و شلوارک دخترانه مدل یونیکورن کد ۳ رنگ سبز",
           "title_en": "",
@@ -41,7 +41,7 @@ class ProductCreationAutoTitleSuggestionMockData extends AMockV2
     protected static function response3(): ?string
     {
         return '{
-        "status": 200,
+        "status": "ok",
         "data": {
           "title_fa": "",
           "title_en": "",

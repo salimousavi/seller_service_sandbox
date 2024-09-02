@@ -10,7 +10,7 @@ class ProductCreationStep2ValidationMockData extends AMockV2
     protected static function response1(): ?string
     {
         return '{
-        "status": 200,
+        "status": "ok",
         "data": {
           "force_url": null,
           "is_valid": true,
@@ -51,7 +51,7 @@ class ProductCreationStep2ValidationMockData extends AMockV2
     protected static function response2(): ?string
     {
         return '{
-        "status": 200,
+        "status": "ok",
         "data": {
           "force_url": null,
           "is_valid": true,
@@ -93,7 +93,7 @@ class ProductCreationStep2ValidationMockData extends AMockV2
     protected static function response3(): ?string
     {
         return '{
-        "status": 200,
+        "status": "ok",
         "data": {
           "force_url": null,
           "is_valid": true,
